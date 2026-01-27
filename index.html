@@ -617,7 +617,7 @@
             const year = 2026;
             
             // Generate all 12 months
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 12 - startMonthIndex; i++) {
                 const monthDiv = document.createElement('div');
                 // min-w-[300px] ensures they don't shrink and force scrolling
                 monthDiv.className = 'glass rounded-xl p-6 min-w-[300px] md:min-w-[320px] snap-center flex flex-col';
