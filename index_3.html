@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ ALEX | Official Page</title>
+    <!-- Подключаем Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключаем шрифт Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Иконки -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        'neon-blue': '#00f3ff',
+                        'neon-purple': '#bc13fe',
+                        'dark-bg': '#0f172a',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Эффект стеклянного фона */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Скрытие скроллбара для чистоты дизайна */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-white antialiased overflow-x-hidden">
+
+    <!-- Навигация -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-black text-2xl tracking-widest text-neon-blue">
+                    DJ ALEX
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-medium">Главная</a>
+                        <a href="#about" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-medium">Обо мне</a>
+                        <a href="#media" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-medium">Музыка & Видео</a>
+                        <a href="#contacts" class="bg-neon-purple hover:bg-fuchsia-600 transition px-4 py-2 rounded-full text-sm font-bold">Заказать</a>
+                    </div>
+                </div>
+                <!-- Мобильное меню (гамбургер) -->
+                <div class="-mr-2 flex md:hidden">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Мобильное меню -->
+        <div class="hidden md:hidden bg-slate-900 absolute w-full" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Главная</a>
+                <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Обо мне</a>
+                <a href="#media" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Медиа</a>
+                <a href="#contacts" class="text-neon-blue block px-3 py-2 rounded-md text-base font-bold">Связаться</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Секция Hero (Первый экран) -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Фоновое изображение (замените URL на свое фото) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?q=80&w=2072&auto=format&fit=crop" alt="DJ Background" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark-bg"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-4 animate-pulse-slow">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-purple-600">FEEL THE</span> BEAT
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto font-light">
+                Создаю атмосферу, которую невозможно забыть. <br>House | Techno | Pop Remixes
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#media" class="px-8 py-3 border border-neon-blue text-neon-blue font-bold rounded hover:bg-neon-blue hover:text-black transition duration-300 uppercase tracking-widest">
+                    Слушать миксы
+                </a>
+                <a href="#contacts" class="px-8 py-3 bg-neon-purple text-white font-bold rounded hover:bg-purple-700 transition duration-300 uppercase tracking-widest shadow-[0_0_15px_rgba(188,19,254,0.5)]">
+                    Забронировать дату
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <div class="absolute -inset-4 bg-gradient-to-r from-neon-blue to-neon-purple opacity-30 blur-lg rounded-xl"></div>
+                <img src="IMG_4620.jpg" alt="DJ Portrait" class="relative rounded-xl shadow-2xl w-full object-cover h-[500px]">
+            </div>
+            <div>
+                <h2 class="text-4xl font-bold mb-6 border-l-4 border-neon-blue pl-4">КТО ТАКОЙ <br>DJ ALEX?</h2>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                    Более 5 лет я взрываю танцполы Москвы и Санкт-Петербурга. Моя философия проста: диджей — это не просто человек, который ставит треки, это психолог толпы. Я чувствую настроение зала и управляю им.
+                </p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center text-gray-300">
+                        <i data-lucide="check-circle" class="text-neon-blue w-5 h-5 mr-3"></i> Профессиональное оборудование
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i data-lucide="check-circle" class="text-neon-blue w-5 h-5 mr-3"></i> Опыт работы на мероприятиях 500+ человек
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i data-lucide="check-circle" class="text-neon-blue w-5 h-5 mr-3"></i> Индивидуальный плейлист под заказчика
+                    </li>
+                </ul>
+                <div class="flex gap-4">
+                    <div class="text-center">
+                        <span class="block text-3xl font-bold text-white">150+</span>
+                        <span class="text-xs text-gray-500 uppercase">Мероприятий</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-3xl font-bold text-white">5+</span>
+                        <span class="text-xs text-gray-500 uppercase">Лет опыта</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Медиа (Аудио и Видео) -->
+    <section id="media" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center">ЗВУК И ВИЗУАЛ</h2>
+            
+            <!-- Сетка -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Блок музыки (Имитация плеера SoundCloud/Mixcloud) -->
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><i data-lucide="headphones" class="mr-2"></i> Последние миксы</h3>
+                    <!-- Сюда вставляется iframe от SoundCloud или Mixcloud -->
+                    <div class="space-y-4">
+                        <div class="bg-slate-800 p-4 rounded flex items-center justify-between hover:bg-slate-700 transition cursor-pointer group">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-neon-purple rounded flex items-center justify-center mr-4 group-hover:scale-110 transition">
+                                    <i data-lucide="play" class="text-white fill-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Deep House Vibes 2024</p>
+                                    <p class="text-xs text-gray-400">Promo Mix • 45:00</p>
+                                </div>
+                            </div>
+                            <span class="text-gray-500 text-sm">Listen</span>
+                        </div>
+                        
+                        <div class="bg-slate-800 p-4 rounded flex items-center justify-between hover:bg-slate-700 transition cursor-pointer group">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-700 rounded flex items-center justify-center mr-4 group-hover:bg-neon-blue transition">
+                                    <i data-lucide="play" class="text-white fill-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Wedding Party Best</p>
+                                    <p class="text-xs text-gray-400">Commercial Pop • 60:00</p>
+                                </div>
+                            </div>
+                            <span class="text-gray-500 text-sm">Listen</span>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-xs text-gray-500 text-center">Интеграция с SoundCloud / Mixcloud будет здесь</p>
+                </div>
+
+                <!-- Блок видео -->
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><i data-lucide="video" class="mr-2"></i> Live выступления</h3>
+                    <div class="aspect-video bg-black rounded-lg overflow-hidden relative group">
+                        <!-- Заглушка для видео, замените src на ваше видео или YouTube iframe -->
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center cursor-pointer hover:bg-white hover:text-black transition">
+                                <i data-lucide="play" class="w-8 h-8 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Календарь (Заглушка под будущее) и Призыв -->
+    <section class="py-16 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6">График выступлений</h2>
+            <p class="text-gray-400 mb-8">
+                Планируете мероприятие? Проверьте свободные даты. 
+                <br><span class="text-neon-blue text-sm">(Модуль онлайн-бронирования в разработке)</span>
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="bg-slate-800 px-6 py-3 rounded border border-slate-700 text-gray-400">
+                    <span class="block text-xl font-bold text-white">12 ДЕК</span>
+                    Private Party, Msk
+                </div>
+                <div class="bg-slate-800 px-6 py-3 rounded border border-slate-700 text-gray-400">
+                    <span class="block text-xl font-bold text-white">31 ДЕК</span>
+                    Club Atmosphere
+                </div>
+                <div class="glass px-6 py-3 rounded border border-neon-blue text-neon-blue">
+                    <span class="block text-xl font-bold">СВОБОДНО</span>
+                    Ваша дата?
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="py-20 bg-gradient-to-t from-black to-slate-900">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-5xl font-black mb-8 text-white">LET'S PARTY</h2>
+            <p class="text-xl text-gray-300 mb-10">
+                Свяжитесь со мной, чтобы обсудить детали вашего мероприятия.
+                Отвечаю в течение 30 минут.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center mb-12">
+                <a href="https://t.me/username" target="_blank" class="flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-bold transition transform hover:-translate-y-1">
+                    <i data-lucide="send"></i> Telegram
+                </a>
+                <a href="https://wa.me/79990000000" target="_blank" class="flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-bold transition transform hover:-translate-y-1">
+                    <i data-lucide="phone"></i> WhatsApp
+                </a>
+                <a href="tel:+79990000000" class="flex items-center justify-center gap-3 border border-gray-600 hover:border-white text-gray-300 hover:text-white px-8 py-4 rounded-lg font-bold transition">
+                    +7 (999) 000-00-00
+                </a>
+            </div>
+
+            <div class="flex justify-center space-x-8 text-gray-500">
+                <a href="#" class="hover:text-neon-purple transition"><i data-lucide="instagram"></i></a>
+                <a href="#" class="hover:text-blue-600 transition">VKontakte</a> <!-- Можно заменить иконку на SVG VK -->
+                <a href="#" class="hover:text-red-600 transition"><i data-lucide="youtube"></i></a>
+            </div>
+            
+            <footer class="mt-20 text-gray-600 text-sm">
+                &copy; 2024 DJ Alex. Все права защищены.
+            </footer>
+        </div>
+    </section>
+
+    <!-- Инициализация иконок -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
