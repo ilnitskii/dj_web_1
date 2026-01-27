@@ -165,6 +165,7 @@
                         <a href="#services" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Все услуги</a>
                         <a href="#photos" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Фото</a>
                         <a href="#calendar" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Календарь</a>
+                        <a href="#reviews" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Отзывы</a>
                         <a href="#contacts" class="bg-neon-purple hover:bg-fuchsia-600 transition px-6 py-2 rounded-full text-sm font-bold shadow-[0_0_10px_rgba(188,19,254,0.3)]">Контакты</a>
                     </div>
                 </div>
@@ -184,6 +185,7 @@
                 <a href="#services" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Все услуги</a>
                 <a href="#photos" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Фото</a>
                 <a href="#calendar" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Календарь</a>
+                <a href="#reviews" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Отзывы</a>
                 <a href="#contacts" class="text-neon-purple font-bold block px-3 py-2 rounded-md text-base">Контакты</a>
             </div>
         </div>
@@ -451,83 +453,146 @@
         </div>
     </section>
 
-    <!-- Photo Gallery -->
+        <!-- Photo Gallery -->
     <section id="photos" class="py-24 bg-dark-surface/20">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-black mb-12 text-center uppercase">Фотографии</h2>
-            
-            <div class="flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory scrollbar-hide">
-                <!-- Placeholders for future photos -->
-                <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                    <img src="images/IMG_2.png"
-                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                
-                    <div class="absolute inset-0 transition"></div>
-                </div>
-                <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                    <img src="images/IMG_3.png"
-                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                
-                    <div class="absolute inset-0 transition"></div>
-                </div>
-                 <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                    <img src="images/IMG_4.png"
-                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                
-                    <div class="absolute inset-0 transition"></div>
-                </div>
-                <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                    <img src="images/IMG_5.png"
-                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                
-                    <div class="absolute inset-0 transition"></div>
-                </div>
-                <!-- Duplicate for demo scroll -->
-                 <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                    <img src="images/IMG_6.png"
-                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                
-                    <div class="absolute inset-0 transition"></div>
-                </div>
-                <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                    <img src="images/IMG_7.png"
-                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                
-                    <div class="absolute inset-0 transition"></div>
+            <h2 class="text-4xl font-black mb-12 text-center uppercase">
+                Фотографии
+            </h2>
+
+            <div class="relative">
+                <!-- Стрелки -->
+                <button class="scroll-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-left" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <button class="scroll-next absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-right" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <!-- Лента -->
+                <div class="photos-scroll flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory no-scrollbar px-10">
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_2.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_3.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_4.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_5.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_6.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_7.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Календарь -->
-    <section id="calendar" class="py-24 text-center overflow-hidden">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-black mb-4">ГРАФИК 2026</h2>
-            <p class="text-gray-400 mb-8">
-                <span class="text-neon-blue">Планируете мероприятие? Проверьте свободные даты.</span>
-                <br><span class="text-sm">Листайте, чтобы увидеть все месяцы.</span>
-            </p>
-            
-            <!-- Horizontal Scroll Calendar Container -->
-            <div class="relative max-w-7xl mx-auto">
-                
-                <!-- Left/Right Fade Gradient Indicators -->
-                <div class="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-dark-bg to-transparent z-10 pointer-events-none md:hidden"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-dark-bg to-transparent z-10 pointer-events-none md:hidden"></div>
 
-                <div class="flex overflow-x-auto gap-4 pb-8 px-4 snap-x snap-mandatory" id="calendar-scroll-area">
-                    <!-- JS Generated Calendars (12 months) -->
+    <section id="calendar" class="py-24 text-center overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-black mb-4">
+                ГРАФИК 2026
+            </h2>
+
+            <p class="text-gray-400 mb-8">
+                <span class="text-neon-blue">Проверьте свободные даты</span><br>
+                <span class="text-sm">Листайте или используйте стрелки</span>
+            </p>
+
+            <div class="relative">
+                <!-- Стрелки -->
+                <button class="scroll-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-left" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <button class="scroll-next absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-right" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <!-- Контейнер месяцев -->
+                <div id="calendar-scroll-area"
+                    class="flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory no-scrollbar px-10">
+                    <!-- Месяцы генерируются JS -->
+                </div>
+            </div>
+
+            <div id="booking-hint" class="hidden mt-8 flex justify-center">
+                <a href="https://t.me/ilnitskiii" target="_blank"
+                class="flex items-center gap-3 bg-neon-blue text-dark-bg px-6 py-3 rounded-full font-bold hover:scale-105 transition">
+                    <i data-lucide="send"></i>
+                    Свяжитесь для бронирования
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Отзывы -->
+    <section id="reviews" class="py-24 bg-dark-bg/40">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-black mb-12 text-center uppercase">
+                Отзывы
+            </h2>
+
+            <div class="relative">
+                <!-- Стрелки -->
+                <button class="scroll-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-left" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <button class="scroll-next absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-right" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <!-- Лента отзывов -->
+                <div id="reviews-scroll"
+                    class="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar px-10">
+
+                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] h-[270px]
+            glass rounded-xl flex items-center justify-center bg-black">
+                        <img src="images/REV_5.png" class="max-h-full object-contain">
+                    </div>
+
+                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] h-[270px]
+            glass rounded-xl flex items-center justify-center bg-black">
+                        <img src="images/REV_4.png" class="max-h-full object-contain">
+                    </div>
+
+                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] min-h-[270px]
+                                glass rounded-xl flex items-center justify-center bg-black">
+                        <img src="images/REV_3.png" class="max-h-full object-contain">
+                    </div>
+
+                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] min-h-[270px]
+                                glass rounded-xl flex items-center justify-center bg-black">
+                        <img src="images/REV_2.png" class="max-h-full object-contain">
+                    </div>
+
+                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] min-h-[270px]
+                                glass rounded-xl flex items-center justify-center bg-black">
+                        <img src="images/REV_1.png" class="max-h-full object-contain">
+                    </div>
+
                 </div>
             </div>
         </div>
-        <div id="booking-hint" class="hidden mt-6 flex justify-center">
-    <a href="https://t.me/ilnitskiii" target="_blank"
-       class="flex items-center gap-3 bg-neon-blue text-dark-bg px-6 py-3 rounded-full font-bold shadow-[0_0_15px_rgba(0,243,255,0.4)] hover:scale-105 transition">
-        <i data-lucide="send"></i>
-        Свяжитесь для бронирования
-    </a>
-</div>
     </section>
+
 
     <!-- Контакты -->
     <section id="contacts" class="py-24 bg-gradient-to-t from-black to-dark-bg border-t border-gray-900">
@@ -709,6 +774,29 @@
             handleScroll();
             window.addEventListener('scroll', handleScroll);
             
+        });
+    </script>
+    <script>
+        function initHorizontalScroll(containerSelector, scrollAmount = 360) {
+            const container = document.querySelector(containerSelector);
+            if (!container) return;
+
+            const prev = container.parentElement.querySelector('.scroll-prev');
+            const next = container.parentElement.querySelector('.scroll-next');
+
+            prev?.addEventListener('click', () => {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            next?.addEventListener('click', () => {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initHorizontalScroll('.photos-scroll', 380);
+            initHorizontalScroll('#calendar-scroll-area', 340);
+            initHorizontalScroll('#reviews-scroll', 400);
         });
     </script>
 </body>
