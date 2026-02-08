@@ -627,22 +627,46 @@
         // VK WIDGET LOGIC
         // -----------------------
         setTimeout(function() {
+        function isIOS() {
+            return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
         var script = document.createElement('script');
         script.src = "https://vk.com/js/api/openapi.js?173";
-        script.onload = function() {
-            try {
-                VK.Widgets.Playlist(
-                    "vk_services_playlist",
-                    160362891,
-                    40925159,
-                    '73a25a0f5fd02cf355'
-                );
-            } catch(e) {
-                console.error("VK Widget Error", e);
+
+        script.onload = function () {
+
+            var container = document.getElementById("vk_services_playlist");
+
+            if (!container) return;
+
+            if (isIOS()) {
+
+            // Для iPhone / iPad — ссылка
+            container.innerHTML = `
+                <a href="https://vk.com/music/playlist/160362891_40925159"
+                target="_blank"
+                class="vk-link">
+                Открыть плейлист ВК
+                </a>
+            `;
+
+            } else {
+
+            // Для ПК и Android — плеер
+            VK.Widgets.Playlist(
+                "vk_services_playlist",
+                160362891,
+                40925159,
+                "73a25a0f5fd02cf355"
+            );
+
             }
         };
+
         document.head.appendChild(script);
-    }, 1000);
+
+        }, 1000);
 
         // -----------------------
         // CALENDAR LOGIC (FULL YEAR)
