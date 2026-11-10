@@ -4,20 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta property="og:title" content="Диджей | Ведущий + DJ (2 в 1)">
-    <meta property="og:description" content="Профессиональная организация свадеб, корпоративов и праздников. Полный цикл услуг.">
+    <meta name="description" content="Ведущий и диджей 2 в 1 в Москве и Подмосковье. Юбилей — 5 часов за 35 000 ₽, свадьба — 6 часов за 65 000 ₽. Посмотрите отзывы и уточните дату в Telegram.">
+    <link rel="canonical" href="https://just-event.ru/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="Ведущий и диджей в Москве и области — DJ JUSTJACK">
+    <meta property="og:description" content="Ведущий и диджей 2 в 1 в Москве и Подмосковье. Юбилей — 5 часов за 35 000 ₽, свадьба — 6 часов за 65 000 ₽. Посмотрите отзывы и уточните дату в Telegram.">
     <meta property="og:image" content="https://just-event.ru/images/preview.png">
-    <meta property="og:url" content="https://just-event.ru">
+    <meta property="og:url" content="https://just-event.ru/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Диджей | Ведущий + DJ (2 в 1)">
+    <meta property="og:site_name" content="DJ JUSTJACK">
     
     <!-- Для Twitter/Telegram -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Свадьбы, корпоративы, юбилеи и другие праздники.">
-    <meta property="twitter:description" content="Вся информация на сайте. Есть вопросы? Пишите!">
-    <meta property="twitter:image" content="https://just-event.ru/images/preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ведущий и диджей в Москве и области — DJ JUSTJACK">
+    <meta name="twitter:description" content="Ведущий и диджей 2 в 1 в Москве и Подмосковье. Юбилей — 5 часов за 35 000 ₽, свадьба — 6 часов за 65 000 ₽. Посмотрите отзывы и уточните дату в Telegram.">
+    <meta name="twitter:image" content="https://just-event.ru/images/preview.png">
 
-    <title>Диджей | Ведущий + DJ (2 в 1)</title>
+    <title>Ведущий и диджей в Москве и области — DJ JUSTJACK</title>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Ведущий и диджей на мероприятия",
+            "url": "https://just-event.ru/",
+            "serviceType": ["Ведущий и диджей", "Диджей на мероприятия"],
+            "areaServed": ["Москва", "Московская область"],
+            "offers": [
+                {
+                    "@type": "Offer",
+                    "name": "Ведущий + DJ на юбилей",
+                    "description": "Пакет на 5 часов",
+                    "price": 35000,
+                    "priceCurrency": "RUB",
+                    "url": "https://just-event.ru/#package-anniversary"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "Ведущий + DJ на свадьбу",
+                    "description": "Пакет на 6 часов",
+                    "price": 65000,
+                    "priceCurrency": "RUB",
+                    "url": "https://just-event.ru/#package-wedding"
+                }
+            ],
+            "provider": {
+                "@type": "Person",
+                "name": "Евгений",
+                "alternateName": "DJ JUSTJACK",
+                "telephone": "+79163551918"
+            }
+        }
+    </script>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -25,7 +62,6 @@
     <!-- Icons (Lucide) -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
     <link rel="manifest" href="images/site.webmanifest" />
@@ -110,23 +146,20 @@
             border-color: rgba(239, 68, 68, 0.3);
         }
         .calendar-day.free {
-            cursor: default;
+            cursor: pointer;
         }
-        .calendar-day.free:hover {
+        .calendar-day.past {
+            opacity: 0.45;
+        }
+        .calendar-day.free:hover,
+        .calendar-day.free[aria-pressed="true"] {
             background-color: rgba(0, 243, 255, 0.1);
             border-color: #00f3ff;
             color: #00f3ff;
         }
 
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            will-change: opacity, visibility;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: none;
+        section[id] {
+            scroll-margin-top: 5rem;
         }
         
         /* Скрытие полосы прокрутки для блоков с горизонтальным скроллом, но оставление функционала */
@@ -214,10 +247,10 @@
 <body class="bg-dark-bg text-white antialiased overflow-x-hidden">
 
     <!-- Floating Telegram Button -->
-    <a href="https://t.me/ilnitskiii" target="_blank" class="fixed bottom-6 right-6 z-50 bg-neon-blue hover:bg-cyan-400 text-dark-bg w-14 h-14 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,243,255,0.5)] transition-all transform hover:scale-110 group">
+    <a href="https://t.me/ilnitskiii?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%2C%20%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%B0%20%D0%BB%D0%B8%20%D0%B4%D0%B0%D1%82%D0%B0%20%D0%B8%20%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE%20%D0%B1%D1%83%D0%B4%D0%B5%D1%82%20%D1%81%D1%82%D0%BE%D0%B8%D1%82%D1%8C%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5.%0A%D0%94%D0%B0%D1%82%D0%B0%3A%20%0A%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82%3A%20%0A%D0%9C%D0%B5%D1%81%D1%82%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F%3A%20" target="_blank" aria-label="Написать в Telegram" class="fixed bottom-6 right-6 z-50 bg-neon-blue hover:bg-cyan-400 text-dark-bg w-14 h-14 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,243,255,0.5)] transition-all transform hover:scale-110 group">
         <i data-lucide="send" class="w-6 h-6"></i>
         <span class="absolute right-16 bg-white text-dark-bg px-3 py-1 rounded text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-            Написать мне
+            Написать в Telegram
         </span>
     </a>
 
@@ -230,10 +263,10 @@
                     class="flex-shrink-0 font-black text-2xl tracking-widest text-white cursor-pointer select-none">
                     DJ JUSTJACK<span class="text-neon-blue">.</span>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#format" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Формат 2 в 1</a>
-                        <a href="#services" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Все услуги</a>
+                <div class="hidden lg:block">
+                    <div class="ml-4 flex items-baseline space-x-2 xl:space-x-6">
+                        <a href="#packages" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Пакеты и цены</a>
+                        <a href="#format" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Как проходит</a>
                         <a href="#photos" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Фото</a>
                         <a href="#calendar" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Календарь</a>
                         <a href="#reviews" class="hover:text-neon-blue transition px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider">Отзывы</a>
@@ -241,7 +274,7 @@
                     </div>
                 </div>
                 <!-- Мобильное меню (гамбургер) -->
-                <div class="-mr-2 flex md:hidden">
+                <div class="-mr-2 flex lg:hidden">
                     <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
                         <i data-lucide="menu" class="w-8 h-8"></i>
                     </button>
@@ -249,10 +282,10 @@
             </div>
         </div>
         <!-- Мобильное меню -->
-        <div class="hidden md:hidden bg-dark-bg border-b border-gray-800" id="mobile-menu">
+        <div class="hidden lg:hidden bg-dark-bg border-b border-gray-800" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-                <a href="#format" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Формат 2в1</a>
-                <a href="#services" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Все услуги</a>
+                <a href="#packages" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Пакеты и цены</a>
+                <a href="#format" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Как проходит</a>
                 <a href="#photos" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Фото</a>
                 <a href="#calendar" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Календарь</a>
                 <a href="#reviews" class="text-gray-300 hover:text-neon-blue block px-3 py-2 rounded-md text-base font-medium">Отзывы</a>
@@ -267,33 +300,27 @@
         <div class="absolute top-0 right-0 w-1/2 h-full bg-neon-blue/5 blur-[120px] rounded-full pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-1/2 h-full bg-neon-purple/5 blur-[120px] rounded-full pointer-events-none"></div>
 
-        <div class="max-w-5xl mx-auto px-4 w-full text-center relative z-10 fade-in-section">
+        <div class="max-w-5xl mx-auto px-4 w-full text-center relative z-10">
             
             <h1 class="font-black tracking-tighter mb-8 leading-tight">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 text-5xl md:text-7xl uppercase tracking-widest">ДИДЖЕЙ</span>
-                <br>
-                <span class="text-neon-blue text-4xl md:text-6xl align-middle leading-normal">·</span>
-                <br>
-                <span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple text-5xl md:text-7xl uppercase animate-pulse-slow drop-shadow-[0_0_15px_rgba(188,19,254,0.3)]">
-                    Ведущий + DJ <br class="md:hidden"> (2 В 1)
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple text-4xl md:text-7xl uppercase">
+                    Ведущий и диджей
                 </span>
+                <span class="block mt-4 text-white text-2xl md:text-4xl">в Москве и области</span>
             </h1>
             
             <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-                Идеальное решение для <span class="text-white font-semibold">свадьбы, юбилея, корпоратива</span> и др.
+                Веду программу и играю DJ-сет на вашем мероприятии. Формат 2 в 1 для <span class="text-white font-semibold">свадеб, юбилеев и корпоративов</span>.
             </p>
             
             <div class="flex flex-col items-center gap-4">
-                <a href="https://t.me/ilnitskiii" class="px-10 py-4 bg-neon-blue text-dark-bg font-black rounded hover:bg-white transition duration-300 uppercase tracking-widest shadow-[0_0_20px_rgba(0,243,255,0.4)] text-center w-full sm:w-auto">
-                    Связаться
+                <a href="https://t.me/ilnitskiii?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%2C%20%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%B0%20%D0%BB%D0%B8%20%D0%B4%D0%B0%D1%82%D0%B0%20%D0%B8%20%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE%20%D0%B1%D1%83%D0%B4%D0%B5%D1%82%20%D1%81%D1%82%D0%BE%D0%B8%D1%82%D1%8C%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5.%0A%D0%94%D0%B0%D1%82%D0%B0%3A%20%0A%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82%3A%20%0A%D0%9C%D0%B5%D1%81%D1%82%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F%3A%20" class="px-10 py-4 bg-neon-blue text-dark-bg font-black rounded hover:bg-white transition duration-300 uppercase tracking-widest shadow-[0_0_20px_rgba(0,243,255,0.4)] text-center w-full sm:w-auto">
+                    Узнать дату и цену в Telegram
                 </a>
-                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                    <a href="https://t.me/justjackdj" target="_blank" class="px-6 py-3 bg-cyan-800 text-white font-bold rounded hover:bg-cyan-700 transition duration-300 uppercase tracking-wider text-sm text-center flex items-center justify-center gap-2 border border-cyan-700 shadow-md">
-                        <i data-lucide="send" class="w-4 h-4"></i> Телеграм канал
-                    </a>
-                    <a href="https://www.instagram.com/ilnitskiski" target="_blank" class="px-6 py-3 bg-cyan-800 text-white font-bold rounded hover:bg-cyan-700 transition duration-300 uppercase tracking-wider text-sm text-center flex items-center justify-center gap-2 border border-cyan-700 shadow-md">
-                        <i data-lucide="instagram" class="w-4 h-4"></i> Instagram
-                    </a>
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-gray-300">
+                    <a href="#packages" class="hover:text-neon-blue underline underline-offset-4">Пакеты и цены</a>
+                    <a href="#calendar" class="hover:text-neon-blue underline underline-offset-4">Календарь дат</a>
+                    <a href="#reviews" class="hover:text-neon-blue underline underline-offset-4">Отзывы с Авито</a>
                 </div>
             </div>
         </div>
@@ -304,181 +331,322 @@
         <div class="max-w-7xl mx-auto py-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-gray-800">
             <div class="px-4">
                 <i data-lucide="map-pin" class="text-neon-purple mx-auto mb-3 w-6 h-6"></i>
-                <h3 class="font-bold uppercase tracking-wider">Москва и область</h3>
-                <p class="text-gray-400 text-sm mt-1">Своё оборудование</p>
+                <p class="font-bold uppercase tracking-wider">Москва и область</p>
+                <p class="text-gray-400 text-sm mt-1">Выезд на площадку</p>
             </div>
             <div class="px-4 pt-4 md:pt-0">
                 <i data-lucide="banknote" class="text-neon-purple mx-auto mb-3 w-6 h-6"></i>
-                <h3 class="font-bold uppercase tracking-wider">Стоимость</h3>
-                <p class="text-gray-400 text-sm mt-1">от 3500 ₽ / час</p>
+                <p class="font-bold uppercase tracking-wider">Стоимость</p>
+                <p class="text-gray-400 text-sm mt-1">от 6&#8239;000 ₽/час</p>
             </div>
             <div class="px-4 pt-4 md:pt-0">
                 <i data-lucide="calendar-check" class="text-neon-purple mx-auto mb-3 w-6 h-6"></i>
-                <h3 class="font-bold uppercase tracking-wider">Сезон 2026</h3>
-                <p class="text-gray-400 text-sm mt-1">Даты активно бронируются</p>
+                <p class="font-bold uppercase tracking-wider">Бронирование</p>
+                <p class="text-gray-400 text-sm mt-1">Проверьте свою дату</p>
             </div>
         </div>
     </div>
 
-    <!-- Обо мне / Формат -->
-    <section id="format" class="py-24 px-4 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="fade-in-section">
-                <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
-                    СОВРЕМЕННЫЙ <br>
-                    <span class="text-neon-blue">ФОРМАТ 2 В 1</span>
-                </h2>
-                <div class="text-gray-400 text-lg mb-8 leading-relaxed space-y-4">
-                    <p>· Музыка + ведение</p>
-                    <p>· Без пафоса и затянутых пауз</p>
-                    <p>· Максимум драйва и комфорта</p>
-                    
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="glass p-5 rounded-xl border-l-4 border-neon-blue hover:bg-white/5 transition">
-                        <div class="flex items-center mb-2">
-                            <i data-lucide="music-2" class="text-neon-blue mr-3"></i>
-                            <h4 class="font-bold text-white">Живой DJ-сет</h4>
-                        </div>
-                        <p class="text-sm text-gray-400">Мощная дискотека</p>
-                    </div>
-                    <div class="glass p-5 rounded-xl border-l-4 border-neon-purple hover:bg-white/5 transition">
-                        <div class="flex items-center mb-2">
-                            <i data-lucide="mic" class="text-neon-purple mr-3"></i>
-                            <h4 class="font-bold text-white">Ведение</h4>
-                        </div>
-                        <p class="text-sm text-gray-400">Яркие конкурсы</p>
-                    </div>
-                </div>
-                <div class="mt-12">
-    <h3 class="text-2xl font-bold mb-8">Этапы подготовки к мероприятию</h3>
-
-    <div class="space-y-6">
-        <!-- 01 -->
-        <div class="flex group">
-            <div class="flex-shrink-0 mr-4 flex flex-col items-center">
-                <div class="w-8 h-8 rounded-full bg-neon-purple flex items-center justify-center font-bold text-white text-sm group-hover:scale-110 transition">
-                    01
-                </div>
-                <div class="h-full w-0.5 bg-gray-800 mt-2"></div>
+    <!-- Пакеты и цены -->
+    <section id="packages" class="py-16 md:py-20 bg-dark-surface/30" aria-labelledby="packages-heading">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 id="packages-heading" class="text-3xl md:text-5xl font-black mb-8">Пакеты «Ведущий + DJ»</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <article id="package-anniversary" class="glass rounded-xl p-6 sm:p-8 scroll-mt-24">
+                    <h3 class="text-xl font-bold">Ведущий + DJ на юбилей</h3>
+                    <p class="mt-2 text-gray-300">5 часов</p>
+                    <p class="mt-3 text-3xl font-black text-neon-blue">35&#8239;000 ₽</p>
+                    <a href="https://t.me/ilnitskiii?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%2C%20%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%B0%20%D0%BB%D0%B8%20%D0%B4%D0%B0%D1%82%D0%B0.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20%C2%AB%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%2B%20DJ%C2%BB%20%D0%BD%D0%B0%20%D1%8E%D0%B1%D0%B8%D0%BB%D0%B5%D0%B9%20%285%20%D1%87%D0%B0%D1%81%D0%BE%D0%B2%29.%0A%D0%94%D0%B0%D1%82%D0%B0%3A%20%0A%D0%9C%D0%B5%D1%81%D1%82%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F%3A%20"
+                        class="mt-5 inline-flex rounded-lg bg-neon-blue px-4 py-3 text-sm font-bold text-dark-bg transition hover:bg-white">
+                        Написать в Telegram
+                    </a>
+                    <a href="#calendar" data-booking-package="Ведущий + DJ на юбилей (5 часов)"
+                        class="mt-3 block w-fit text-sm font-semibold text-neon-blue underline underline-offset-4 hover:text-white">
+                        Выбрать дату в календаре
+                    </a>
+                </article>
+                <article id="package-wedding" class="glass rounded-xl p-6 sm:p-8 scroll-mt-24">
+                    <h3 class="text-xl font-bold">Ведущий + DJ на свадьбу</h3>
+                    <p class="mt-2 text-gray-300">6 часов</p>
+                    <p class="mt-3 text-3xl font-black text-neon-blue">65&#8239;000 ₽</p>
+                    <a href="https://t.me/ilnitskiii?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%2C%20%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%B0%20%D0%BB%D0%B8%20%D0%B4%D0%B0%D1%82%D0%B0.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20%C2%AB%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%2B%20DJ%C2%BB%20%D0%BD%D0%B0%20%D1%81%D0%B2%D0%B0%D0%B4%D1%8C%D0%B1%D1%83%20%286%20%D1%87%D0%B0%D1%81%D0%BE%D0%B2%29.%0A%D0%94%D0%B0%D1%82%D0%B0%3A%20%0A%D0%9C%D0%B5%D1%81%D1%82%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F%3A%20"
+                        class="mt-5 inline-flex rounded-lg bg-neon-blue px-4 py-3 text-sm font-bold text-dark-bg transition hover:bg-white">
+                        Написать в Telegram
+                    </a>
+                    <a href="#calendar" data-booking-package="Ведущий + DJ на свадьбу (6 часов)"
+                        class="mt-3 block w-fit text-sm font-semibold text-neon-blue underline underline-offset-4 hover:text-white">
+                        Выбрать дату в календаре
+                    </a>
+                </article>
             </div>
-            <div class="pb-6">
-                <h4 class="text-lg font-bold text-white">Встреча / Созвон</h4>
-                <p class="text-gray-400 text-sm mt-1">
-                    Обсуждение формата мероприятия.
-                </p>
+
+            <div class="mt-8 glass rounded-xl p-6 sm:p-8">
+                <h3 class="text-2xl font-bold">Что входит в оба пакета</h3>
+                <ul class="mt-4 list-disc pl-5 space-y-2 text-gray-300 marker:text-neon-blue">
+                    <li>Предварительная встреча / созвон</li>
+                    <li>Подбор конкурсов по вашим пожеланиям, пришлю примерный каталог</li>
+                    <li>Проработка сценария</li>
+                    <li>Ноутбук, стойка, два микрофона и DJ-контроллер</li>
+                    <li>Ведение мероприятия и DJ-сет</li>
+                    <li>Караоке-база на 10&#8239;000 песен</li>
+                </ul>
+                <div id="music" class="mt-6 border-t border-gray-700 pt-5 scroll-mt-24">
+                    <h4 class="font-bold">Если на площадке нет звука</h4>
+                    <p class="mt-2 text-gray-300">Привезу колонки общей мощностью 2&#8239;000 Вт, микшер и кабели для подключения. Доставка и монтаж — дополнительно <strong class="text-white">7&#8239;000 ₽</strong>.</p>
+                </div>
+                <p class="mt-4 text-sm text-gray-400">Если дорога от метро «Речной вокзал» занимает больше часа, доплату за выезд согласуем заранее.</p>
             </div>
         </div>
+    </section>
 
-        <!-- 02 -->
-        <div class="flex group">
-            <div class="flex-shrink-0 mr-4 flex flex-col items-center">
-                <div class="w-8 h-8 rounded-full bg-neon-blue flex items-center justify-center font-bold text-black text-sm group-hover:scale-110 transition">
-                    02
-                </div>
-                <div class="h-full w-0.5 bg-gray-800 mt-2"></div>
-            </div>
-            <div class="pb-6">
-                <h4 class="text-lg font-bold text-white">Разработка программы</h4>
-                <p class="text-gray-400 text-sm mt-1">
-                    Сценарий и тайминг.
-                </p>
-            </div>
-        </div>
-
-        <!-- 03 -->
-        <div class="flex group">
-            <div class="flex-shrink-0 mr-4 flex flex-col items-center">
-                <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center font-bold text-white text-sm group-hover:scale-110 transition">
-                    03
-                </div>
-            </div>
+    <!-- Формат -->
+    <section id="format" class="py-16 md:py-20 px-4 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-                <h4 class="text-lg font-bold text-white">Музыка</h4>
-                <p class="text-gray-400 text-sm mt-1">
-                    Индивидуальный подход в подборе треков.
-                </p>
+                <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">Как проходит <span class="text-neon-blue">мероприятие</span></h2>
+                <p class="text-gray-300 text-lg leading-relaxed">Заранее обсуждаем, как вы хотите провести вечер, какие интерактивы подойдут гостям и какую музыку хотите услышать. На мероприятии я веду программу и подбираю треки под настроение гостей.</p>
             </div>
-        </div>
-    </div>
-</div>
-
-            </div>
-
-            <div class="relative fade-in-section delay-100">
+            <div class="relative delay-100">
                 <div class="absolute -inset-4 bg-gradient-to-r from-neon-blue to-neon-purple opacity-20 blur-2xl rounded-xl"></div>
                 <div class="relative rounded-xl overflow-hidden shadow-2xl border border-gray-700">
-                    <img src="images/IMG_1.png" alt="DJ Atmosphere" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition duration-700 hover:scale-105">
+                    <img src="images/IMG_1.png" loading="lazy" decoding="async" alt="DJ JUSTJACK на мероприятии" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition duration-700 hover:scale-105">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Музыка и Оборудование -->
-    <section id="music" class="py-24 bg-dark-surface/30 relative">
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-16 fade-in-section">
-                <h2 class="text-4xl font-black mb-4">ЗВУК И АТМОСФЕРА</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    Ничего арендовать не нужно — всё привожу с собой.
-                </p>
-            </div>
-            
-            <!-- Equipment Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-20 fade-in-section">
-                <div class="glass p-6 rounded-xl text-center group hover:bg-white/5 transition duration-300">
-                    <div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition group-hover:bg-neon-blue group-hover:text-black">
-                        <i data-lucide="speaker" class="w-7 h-7"></i>
+    <!-- Photo Gallery -->
+    <section id="photos" class="py-24 bg-dark-surface/20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-black mb-12 text-center uppercase">
+                Фотографии
+            </h2>
+
+            <div class="relative">
+                <!-- Стрелки -->
+                <button type="button" aria-label="Назад" class="scroll-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-left" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <button type="button" aria-label="Вперёд" class="scroll-next absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-right" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <!-- Лента -->
+                <div class="photos-scroll flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory no-scrollbar px-10">
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_2.png" loading="lazy" decoding="async" alt="Фото с мероприятия DJ JUSTJACK" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                     </div>
-                    <h3 class="font-bold mb-2">Звук 2000 Вт</h3>
-                    <p class="text-xs text-gray-400">Мощные колонки для любого зала</p>
-                </div>
-                <div class="glass p-6 rounded-xl text-center group hover:bg-white/5 transition duration-300">
-                    <div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition group-hover:bg-neon-purple group-hover:text-white">
-                        <i data-lucide="sliders" class="w-7 h-7"></i>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_3.png" loading="lazy" decoding="async" alt="Фото с мероприятия DJ JUSTJACK" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                     </div>
-                    <h3 class="font-bold mb-2">DJ Контроллер</h3>
-                    <p class="text-xs text-gray-400">Живое сведение треков</p>
-                </div>
-                <div class="glass p-6 rounded-xl text-center group hover:bg-white/5 transition duration-300">
-                    <div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition group-hover:bg-neon-blue group-hover:text-black">
-                        <i data-lucide="lightbulb" class="w-7 h-7"></i>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_4.png" loading="lazy" decoding="async" alt="Фото с мероприятия DJ JUSTJACK" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                     </div>
-                    <h3 class="font-bold mb-2">Светомузыка</h3>
-                    <p class="text-xs text-gray-400">Для танцевальной атмосферы</p>
-                </div>
-                <div class="glass p-6 rounded-xl text-center group hover:bg-white/5 transition duration-300">
-                    <div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition group-hover:bg-neon-purple group-hover:text-white">
-                        <i data-lucide="mic-2" class="w-7 h-7"></i>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_5.png" loading="lazy" decoding="async" alt="Фото с мероприятия DJ JUSTJACK" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                     </div>
-                    <h3 class="font-bold mb-2">Радиомикрофоны</h3>
-                    <p class="text-xs text-gray-400">Стойки и коммутация</p>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_6.png" loading="lazy" decoding="async" alt="Фото с мероприятия DJ JUSTJACK" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
+                        <img src="images/IMG_7.png" loading="lazy" decoding="async" alt="Фото с мероприятия DJ JUSTJACK" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Все услуги -->
+
+    <!-- Календарь -->
+
+    <section id="calendar" class="py-24 text-center overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="calendar-heading" tabindex="-1" class="text-4xl font-black mb-4">
+                КАЛЕНДАРЬ ЗАНЯТЫХ ДАТ
+            </h2>
+
+            <p class="text-gray-400 mb-8">
+                <span class="text-neon-blue">Выберите дату, чтобы уточнить доступность</span><br>
+                <span class="text-sm">Занятые даты зачёркнуты. Месяцы можно листать.</span>
+            </p>
+
+            <div class="mb-4 text-sm text-gray-300">
+                <p id="selected-package" aria-live="polite"></p>
+                <button type="button" id="clear-package" hidden class="mt-2 text-neon-blue underline underline-offset-4">Сбросить выбор пакета</button>
+            </div>
+
+            <div class="relative">
+                <!-- Стрелки -->
+                <button type="button" aria-label="Назад" class="scroll-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-left" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <button type="button" aria-label="Вперёд" class="scroll-next absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
+                    <i data-lucide="chevron-right" class="w-8 h-8 text-neon-blue"></i>
+                </button>
+
+                <!-- Контейнер месяцев -->
+                <div id="calendar-scroll-area"
+                    class="flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory no-scrollbar md:px-10">
+                    <!-- Месяцы генерируются JS -->
+                </div>
+            </div>
+
+            <noscript><p class="mb-4 text-gray-400">Уточнить дату можно в Telegram.</p></noscript>
+            <div id="booking-hint" class="mt-4 flex flex-col items-center gap-3">
+                <p id="selected-date" class="text-sm text-gray-300" aria-live="polite"></p>
+                <a href="https://t.me/ilnitskiii?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%2C%20%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%B0%20%D0%BB%D0%B8%20%D0%B4%D0%B0%D1%82%D0%B0%20%D0%B8%20%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE%20%D0%B1%D1%83%D0%B4%D0%B5%D1%82%20%D1%81%D1%82%D0%BE%D0%B8%D1%82%D1%8C%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5.%0A%D0%94%D0%B0%D1%82%D0%B0%3A%20%0A%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82%3A%20%0A%D0%9C%D0%B5%D1%81%D1%82%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F%3A%20" target="_blank"
+                class="flex items-center gap-3 bg-neon-blue text-dark-bg px-6 py-3 rounded-full font-bold hover:scale-105 transition">
+                    <i data-lucide="send"></i>
+                    Уточнить дату в Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Отзывы -->
+    <section id="reviews" class="py-24 bg-dark-bg/40" aria-labelledby="reviews-heading">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="reviews-heading" class="text-4xl font-black mb-3 text-center uppercase">Отзывы с Авито</h2>
+
+            <div>
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <p class="text-sm text-gray-400">Листайте отзывы вправо и влево</p>
+                    <div class="flex gap-2">
+                        <button type="button" aria-label="Предыдущий отзыв" aria-controls="reviews-scroll"
+                            class="scroll-prev grid place-items-center w-11 h-11 rounded-full glass text-neon-blue hover:bg-white/10">
+                            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                        </button>
+                        <button type="button" aria-label="Следующий отзыв" aria-controls="reviews-scroll"
+                            class="scroll-next grid place-items-center w-11 h-11 rounded-full glass text-neon-blue hover:bg-white/10">
+                            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="reviews-scroll" role="region" aria-label="Лента отзывов" tabindex="0"
+                    class="grid grid-flow-col auto-cols-[100%] lg:auto-cols-[calc((100%_-_1rem)/2)] items-start gap-4 overflow-x-auto snap-x snap-mandatory pb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-blue">
+                    <article class="glass rounded-xl p-5 md:p-8 snap-start">
+                        <h3 class="text-xl font-bold">София · Юбилей в стиле диско</h3>
+                        <p class="mt-1 text-sm text-gray-400">
+                            <span class="text-amber-400" aria-hidden="true">★★★★★</span>
+                            <span class="sr-only">5 из 5</span> · Сделка состоялась
+                        </p>
+                        <blockquote class="mt-4 space-y-3 text-gray-200 leading-relaxed">
+                            <p>«С Евгением сразу договорились о созвоне, оперативно включился в работу, услышал все пожелания и сделал все так, как хотели именно мы! Юбилей моей тети - 60 лет , публика была разновозрастная, но никому не было скучно. Мы заранее обсудили программу, каждый интерактив и желаемый плейлист - Евгений учел все все все! У нас была тематика Диско, весь народ и пел и танцевал. Как классно, когда гости действительно в кайфе, а у нас так и было 😍😍 я очень рада, что все так круто у нас совпало! Евгений, большая благодарность вам!!🫶🏽🫶🏽🫶🏽🫶🏽 рекомендую от всей души ❤️»</p>
+                        </blockquote>
+                    </article>
+
+                    <article class="glass rounded-xl p-5 md:p-8 snap-start">
+                        <h3 class="text-xl font-bold">Ирина · 18-летие дочери</h3>
+                        <p class="mt-1 text-sm text-gray-400">
+                            <span class="text-amber-400" aria-hidden="true">★★★★★</span>
+                            <span class="sr-only">5 из 5</span> · Сделка состоялась
+                        </p>
+                        <blockquote class="mt-4 space-y-3 text-gray-200 leading-relaxed">
+                            <p>«Отмечали 18-летие нашей дочери и хотели, чтобы ведущий и диджей были одним человеком. Нашли именно такого специалиста — Евгения.</p>
+                            <p>Общались с ним легко и быстро согласовали программу вечера. Евгений провёл праздник на самом высоком уровне! Атмосфера была весёлая, энергичная и позитивная. Молодежь танцевала и осталась очень довольна!</p>
+                            <p>Огромное спасибо Евгению за незабываемый вечер и профессионализм! Мы точно будем рекомендовать его друзьям и знакомым 👍🏻»</p>
+                        </blockquote>
+                    </article>
+
+                    <article class="glass rounded-xl p-5 md:p-8 snap-start">
+                        <h3 class="text-xl font-bold">Александра · Юбилей мамы</h3>
+                        <p class="mt-1 text-sm text-gray-400">
+                            <span class="text-amber-400" aria-hidden="true">★★★★★</span>
+                            <span class="sr-only">5 из 5</span> · Сделка состоялась
+                        </p>
+                        <blockquote class="mt-4 space-y-3 text-gray-200 leading-relaxed">
+                            <p>«Евгений, спасибо вам огромное за проведение нашего праздника-юбилея мамы, все гости остались довольны.</p>
+                            <p>Спасибо за конкурсы и музыку, было очень весело, гости не скучали. День рождение превзошел все ожидания. Своей музыкой и конкурсами Вы объединили все поколения на празднике, скучать никому не пришлось.</p>
+                            <p>Отличный подход к своему делу. Однозначно рекомендую Евгения для проведения вашего праздника. Всегда на связи. Подберет музыку, видео-поздравления и программу. Большое спасибо за прекрасное музыкальное сопровождение праздника! Спасибо вам за все!»</p>
+                        </blockquote>
+                    </article>
+
+                    <article class="glass rounded-xl p-5 md:p-8 snap-start">
+                        <h3 class="text-xl font-bold">Ева</h3>
+                        <p class="mt-1 text-sm text-gray-400">
+                            <span class="text-amber-400" aria-hidden="true">★★★★★</span>
+                            <span class="sr-only">5 из 5</span> · Сделка состоялась
+                        </p>
+                        <blockquote class="mt-4 space-y-3 text-gray-200 leading-relaxed">
+                            <p>«Евгений молодец!</p>
+                            <p>Всему коллективу он понравился. Желаю процветания в своем деле.»</p>
+                        </blockquote>
+                    </article>
+
+                    <article class="glass rounded-xl p-5 md:p-8 snap-start">
+                        <h3 class="text-xl font-bold">Ольга</h3>
+                        <p class="mt-1 text-sm text-gray-400">
+                            <span class="text-amber-400" aria-hidden="true">★★★★★</span>
+                            <span class="sr-only">5 из 5</span> · Сделка состоялась
+                        </p>
+                        <blockquote class="mt-4 space-y-3 text-gray-200 leading-relaxed">
+                            <p>«Спасибо огромное за праздник!!! Всё обговорили и обсудили за одну встречу. И ведущий и ДИ на высоте. Прошло всё отлично. И детям и взрослым было очень весело и душевно. Прекрасные ребята. Спасибо огромное! Рекомендую однозначно, не пожалеете!»</p>
+                        </blockquote>
+                    </article>
+
+                    <article class="glass rounded-xl p-5 md:p-8 snap-start">
+                        <h3 class="text-xl font-bold">Артем · Вечеринка</h3>
+                        <p class="mt-1 text-sm text-gray-400">
+                            <span class="text-amber-400" aria-hidden="true">★★★★★</span>
+                            <span class="sr-only">5 из 5</span> · Сделка состоялась
+                        </p>
+                        <blockquote class="mt-4 space-y-3 text-gray-200 leading-relaxed">
+                            <p>«Работали с диджеем на мероприятии в кальянной — всё чётко, музыкальный вкус отличный, умеет подстраиваться под публику, в конце получилась бомбовая вечеринка. Рекомендуем к сотрудничеству.»</p>
+                        </blockquote>
+                    </article>
+
+                    <article class="glass rounded-xl p-5 md:p-8 snap-start">
+                        <h3 class="text-xl font-bold">Игорь · DJ-сет</h3>
+                        <p class="mt-1 text-sm text-gray-400">
+                            <span class="text-amber-400" aria-hidden="true">★★★★★</span>
+                            <span class="sr-only">5 из 5</span> · Сделка состоялась
+                        </p>
+                        <blockquote class="mt-4 space-y-3 text-gray-200 leading-relaxed">
+                            <p>«Евгений — профессионал. Все чётко по договорённостям, без задержек. Отыграл качественный сет в заведении. Чувствует атмосферу зала, понимает, какой именно трек/жанр нужен в определенный момент.</p>
+                            <p>Будем обращаться еще. Спасибо 🤝»</p>
+                        </blockquote>
+                    </article>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-center">
+                <a href="#calendar" class="inline-flex items-center justify-center rounded-full bg-neon-blue px-6 py-3 text-sm font-bold text-dark-bg transition hover:bg-white">
+                    Проверить мою дату
+                </a>
+                <a href="https://www.avito.ru/brands/d5848552d39ea6ea94c8fd9710660532/all?page_from=from_item_card_icon&amp;iid=7637825384&amp;sellerId=03353362e7b11653593e341a92c60db6"
+                    target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-3 rounded-full border border-cyan-700 bg-cyan-950/60 px-6 py-3 text-sm font-bold text-white transition hover:border-neon-blue hover:bg-cyan-900">
+                    Читать отзывы в профиле на Авито
+                    <span aria-hidden="true" class="text-neon-blue">↗</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Дополнительные услуги -->
     <section id="services" class="py-24 bg-dark-bg relative">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                 <!-- Услуги -->
-                <div class="fade-in-section">
+                <div>
                     <h2 class="text-2xl md:text-3xl font-black mb-6">
-                        ВСЕ <span class="text-neon-blue">УСЛУГИ</span>
+                        Другие <span class="text-neon-blue">услуги</span>
                     </h2>
 
                     <ul class="space-y-4 text-base">
                         <li class="flex items-center glass p-4 rounded-xl border-l-4 border-neon-blue">
                             <i data-lucide="disc-3" class="text-neon-blue mr-3 w-5 h-5"></i>
                             <span><strong>Диджей</strong></span>
-                        </li>
-
-                        <li class="flex items-center glass p-4 rounded-xl border-l-4 border-neon-purple">
-                            <i data-lucide="mic" class="text-neon-purple mr-3 w-5 h-5"></i>
-                            <span><strong>Ведущий + DJ</strong></span>
                         </li>
 
                         <li class="flex items-center glass p-4 rounded-xl border-l-4 border-neon-blue">
@@ -498,18 +666,18 @@
                     </ul>
                         <div class="mt-8 flex items-center gap-3 text-gray-300">
                         <i data-lucide="send" class="text-neon-blue"></i>
-                        <a href="https://t.me/ilnitskiii" target="_blank"
+                        <a href="https://t.me/ilnitskiii?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%2C%20%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%B0%20%D0%BB%D0%B8%20%D0%B4%D0%B0%D1%82%D0%B0%20%D0%B8%20%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE%20%D0%B1%D1%83%D0%B4%D0%B5%D1%82%20%D1%81%D1%82%D0%BE%D0%B8%D1%82%D1%8C%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5.%0A%D0%94%D0%B0%D1%82%D0%B0%3A%20%0A%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82%3A%20%0A%D0%9C%D0%B5%D1%81%D1%82%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F%3A%20" target="_blank"
                         class="font-bold text-neon-blue hover:text-white transition">
-                            Узнавайте актуальные цены в Telegram
+                            Обсудить другие услуги в Telegram
                         </a>
                     </div>
                 </div>
 
                 <!-- VK Widget -->
-                <div class="glass p-6 rounded-xl border border-gray-700 fade-in-section">
+                <div class="glass p-6 rounded-xl border border-gray-700">
                     <h3 class="text-xl font-bold mb-6 flex items-center">
                         <i data-lucide="headphones" class="mr-3 text-neon-blue"></i>
-                        Примеры работ
+                        DJ миксы
                     </h3>
 
                     <div class="vk-dark-mode-hack relative rounded-lg overflow-hidden bg-white/5 min-h-[400px] flex items-center justify-center border border-gray-800">
@@ -528,163 +696,17 @@
         </div>
     </section>
 
-        <!-- Photo Gallery -->
-    <section id="photos" class="py-24 bg-dark-surface/20">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-black mb-12 text-center uppercase">
-                Фотографии
-            </h2>
-
-            <div class="relative">
-                <!-- Стрелки -->
-                <button class="scroll-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
-                    <i data-lucide="chevron-left" class="w-8 h-8 text-neon-blue"></i>
-                </button>
-
-                <button class="scroll-next absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
-                    <i data-lucide="chevron-right" class="w-8 h-8 text-neon-blue"></i>
-                </button>
-
-                <!-- Лента -->
-                <div class="photos-scroll flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory no-scrollbar px-10">
-                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                        <img src="images/IMG_2.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
-
-                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                        <img src="images/IMG_3.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
-
-                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                        <img src="images/IMG_4.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
-
-                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                        <img src="images/IMG_5.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
-
-                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                        <img src="images/IMG_6.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
-
-                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center relative group">
-                        <img src="images/IMG_7.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Календарь -->
-
-    <section id="calendar" class="py-24 text-center overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-black mb-4">
-                ГРАФИК 2026
-            </h2>
-
-            <p class="text-gray-400 mb-8">
-                <span class="text-neon-blue">Проверьте свободные даты</span><br>
-                <span class="text-sm">Листайте или используйте стрелки</span>
-            </p>
-
-            <div class="relative">
-                <!-- Стрелки -->
-                <button class="scroll-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
-                    <i data-lucide="chevron-left" class="w-8 h-8 text-neon-blue"></i>
-                </button>
-
-                <button class="scroll-next absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
-                    <i data-lucide="chevron-right" class="w-8 h-8 text-neon-blue"></i>
-                </button>
-
-                <!-- Контейнер месяцев -->
-                <div id="calendar-scroll-area"
-                    class="flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory no-scrollbar px-10">
-                    <!-- Месяцы генерируются JS -->
-                </div>
-            </div>
-
-            <div id="booking-hint" class="hidden mt-8 flex justify-center">
-                <a href="https://t.me/ilnitskiii" target="_blank"
-                class="flex items-center gap-3 bg-neon-blue text-dark-bg px-6 py-3 rounded-full font-bold hover:scale-105 transition">
-                    <i data-lucide="send"></i>
-                    Свяжитесь для бронирования
-                </a>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Отзывы -->
-    <section id="reviews" class="py-24 bg-dark-bg/40">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-black mb-12 text-center uppercase">
-                Отзывы
-            </h2>
-
-            <div class="relative">
-                <!-- Стрелки -->
-                <button class="scroll-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
-                    <i data-lucide="chevron-left" class="w-8 h-8 text-neon-blue"></i>
-                </button>
-
-                <button class="scroll-next absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex">
-                    <i data-lucide="chevron-right" class="w-8 h-8 text-neon-blue"></i>
-                </button>
-
-                <!-- Лента отзывов -->
-                <div id="reviews-scroll"
-                    class="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar px-10">
-
-                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] h-[270px]
-            glass rounded-xl flex items-center justify-center bg-black">
-                        <img src="images/REV_6.png" class="max-h-full object-contain">
-                    </div>
-                    
-                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] h-[270px]
-            glass rounded-xl flex items-center justify-center bg-black">
-                        <img src="images/REV_5.png" class="max-h-full object-contain">
-                    </div>
-
-                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] h-[270px]
-            glass rounded-xl flex items-center justify-center bg-black">
-                        <img src="images/REV_4.png" class="max-h-full object-contain">
-                    </div>
-
-                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] min-h-[270px]
-                                glass rounded-xl flex items-center justify-center bg-black">
-                        <img src="images/REV_3.png" class="max-h-full object-contain">
-                    </div>
-
-                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] min-h-[270px]
-                                glass rounded-xl flex items-center justify-center bg-black">
-                        <img src="images/REV_2.png" class="max-h-full object-contain">
-                    </div>
-
-                    <div class="snap-center flex-shrink-0 w-[320px] md:w-[420px] min-h-[270px]
-                                glass rounded-xl flex items-center justify-center bg-black">
-                        <img src="images/REV_1.png" class="max-h-full object-contain">
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-
     <!-- Контакты -->
     <section id="contacts" class="py-24 bg-gradient-to-t from-black to-dark-bg border-t border-gray-900">
-        <div class="max-w-3xl mx-auto px-4 text-center fade-in-section">
+        <div class="max-w-3xl mx-auto px-4 text-center">
             <h2 class="text-5xl font-black mb-8 text-white">Контакты</h2>
             <p class="text-xl text-gray-300 mb-10">
-                Свяжитесь со мной, чтобы обсудить детали.
-                <br>Отвечаю быстро.
+                Напишите дату, формат и место мероприятия.
+                <br>Уточню доступность и стоимость.
             </p>
             
             <div class="flex flex-col md:flex-row gap-6 justify-center mb-16">
-                <a href="https://t.me/ilnitskiii" target="_blank" class="flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-bold transition transform hover:-translate-y-1 shadow-lg shadow-blue-500/20">
+                <a href="https://t.me/ilnitskiii?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%2C%20%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%B0%20%D0%BB%D0%B8%20%D0%B4%D0%B0%D1%82%D0%B0%20%D0%B8%20%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE%20%D0%B1%D1%83%D0%B4%D0%B5%D1%82%20%D1%81%D1%82%D0%BE%D0%B8%D1%82%D1%8C%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5.%0A%D0%94%D0%B0%D1%82%D0%B0%3A%20%0A%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82%3A%20%0A%D0%9C%D0%B5%D1%81%D1%82%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F%3A%20" target="_blank" class="flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-bold transition transform hover:-translate-y-1 shadow-lg shadow-blue-500/20">
                     <i data-lucide="send"></i> Telegram
                 </a>
                 <a href="tel:89163551918" class="flex items-center justify-center gap-3 border border-gray-600 hover:border-white text-gray-300 hover:text-white px-8 py-4 rounded-lg font-bold transition">
@@ -692,8 +714,17 @@
                 </a>
             </div>
 
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <a href="https://t.me/justjackdj" target="_blank" class="px-6 py-3 bg-cyan-800 text-white font-bold rounded hover:bg-cyan-700 transition duration-300 uppercase tracking-wider text-sm text-center flex items-center justify-center gap-2 border border-cyan-700 shadow-md">
+                    <i data-lucide="send" class="w-4 h-4"></i> Телеграм канал
+                </a>
+                <a href="https://www.instagram.com/ilnitskiski" target="_blank" class="px-6 py-3 bg-cyan-800 text-white font-bold rounded hover:bg-cyan-700 transition duration-300 uppercase tracking-wider text-sm text-center flex items-center justify-center gap-2 border border-cyan-700 shadow-md">
+                    <i data-lucide="instagram" class="w-4 h-4"></i> Instagram
+                </a>
+            </div>
+
             <footer class="text-gray-600 text-sm border-t border-gray-900 pt-8">
-                &copy; 2026
+                &copy; DJ JUSTJACK
             </footer>
         </div>
     </section>
@@ -701,7 +732,7 @@
     <!-- Scripts -->
     <script>
         // Init Lucide Icons
-        lucide.createIcons();
+        window.lucide?.createIcons();
 
         // -----------------------
         // VK WIDGET LOGIC
@@ -757,96 +788,116 @@
 
         }, 1000);
 
-        // -----------------------
-        // CALENDAR LOGIC (FULL YEAR)
-        // -----------------------
-        const busyDates2026 = [
-            '2026-05-23', // 23 мая
-            '2026-06-06', // 6 июня
-            '2026-06-20', // 20 июня
-            '2026-07-11', // 11 июля
-            '2026-05-02',
-            '2026-09-11',
-            '2026-05-21',
-            '2026-05-04'
-            
-            
-        ];
+        const busyDates = new Set([
+            '2026-11-15', '2026-11-18', '2026-11-19', '2026-11-25',
+            '2026-12-09', '2026-12-12', '2026-12-23',
+            '2027-01-02', '2027-01-20', '2027-01-27',
+            '2027-02-03', '2027-02-17',
+        ]);
 
-        // const monthNames = [
-        //     'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-        //     'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
-        // ];
-
-
-            const startMonthIndex = 4
-            const monthNames = [
-            'Май', 'Июнь',
-            'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
-        ];
-
-
-        function createFullYearCalendar() {
+        function renderCalendar() {
             const container = document.getElementById('calendar-scroll-area');
-            const year = 2026;
-            
-            // Generate all 12 months
-            for (let i = 0; i < 12 - startMonthIndex; i++) {
-                const monthDiv = document.createElement('div');
-                // min-w-[300px] ensures they don't shrink and force scrolling
-                monthDiv.className = 'glass rounded-xl p-6 min-w-[300px] md:min-w-[320px] snap-center flex flex-col';
-                
-                // Header
-                const header = document.createElement('h4');
-                header.className = 'text-xl font-bold text-center mb-4 text-white uppercase tracking-widest';
-                header.innerText = `${monthNames[i]} ${year}`;
-                monthDiv.appendChild(header);
+            const bookingLink = document.querySelector('#booking-hint a');
+            const selectedDate = document.getElementById('selected-date');
+            const selectedPackage = document.getElementById('selected-package');
+            const clearPackage = document.getElementById('clear-package');
+            const defaultBookingUrl = bookingLink.href;
+            const today = new Intl.DateTimeFormat('sv-SE', {
+                timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit',
+            }).format(new Date());
+            const [currentYear, currentMonth] = today.split('-').map(Number);
+            const monthNames = new Intl.DateTimeFormat('ru-RU', { month: 'long' });
+            const dateLabels = new Intl.DateTimeFormat('ru-RU', {
+                day: 'numeric', month: 'long', year: 'numeric',
+            });
+            let selectedButton;
+            let dateLabel = '';
+            let packageLabel = '';
 
-                // Grid
-                const grid = document.createElement('div');
-                grid.className = 'grid grid-cols-7 gap-2 text-center flex-grow';
-                
-                // Weekdays
-                const weekdays = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
-                weekdays.forEach(day => {
-                    const el = document.createElement('div');
-                    el.className = 'text-xs text-gray-500 uppercase font-bold py-2';
-                    el.innerText = day;
-                    grid.appendChild(el);
-                });
+            function updateBooking() {
+                selectedPackage.textContent = packageLabel ? `Пакет: ${packageLabel}` : '';
+                clearPackage.hidden = !packageLabel;
+                selectedDate.textContent = dateLabel ? `Выбрано: ${dateLabel}` : '';
 
-                // Logic to fill days
-                const realMonthIndex = startMonthIndex + i;
-                const daysInMonth = new Date(year, realMonthIndex + 1, 0).getDate();
-                let firstDay = new Date(year, realMonthIndex, 1).getDay();
-                firstDay = firstDay === 0 ? 6 : firstDay - 1;
-
-                // Empty slots
-                for(let k=0; k<firstDay; k++) {
-                    const empty = document.createElement('div');
-                    grid.appendChild(empty);
+                if (!dateLabel && !packageLabel) {
+                    bookingLink.href = defaultBookingUrl;
+                    return;
                 }
 
-                // Date numbers
-                for (let d = 1; d <= daysInMonth; d++) {
-                    const dateStr = `${year}-${String(realMonthIndex + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-                    const dayEl = document.createElement('div');
-                    dayEl.innerText = d;
+                const format = packageLabel ? `Пакет: ${packageLabel}` : 'Формат: ';
+                const message = `Здравствуйте! Хочу уточнить доступность и стоимость.\nДата: ${dateLabel}\n${format}\nМесто проведения мероприятия: `;
+                bookingLink.href = 'https://t.me/ilnitskiii?text=' + encodeURIComponent(message);
+            }
 
-                    if (busyDates2026.includes(dateStr)) {
-                        dayEl.className = 'calendar-day busy';
-                        dayEl.title = 'Дата занята';
+            document.querySelectorAll('[data-booking-package]').forEach(link => {
+                link.addEventListener('click', () => {
+                    packageLabel = link.dataset.bookingPackage;
+                    updateBooking();
+                });
+            });
+            clearPackage.addEventListener('click', () => {
+                packageLabel = '';
+                updateBooking();
+                document.getElementById('calendar-heading').focus({ preventScroll: true });
+            });
+
+            for (let offset = 0; offset < 4; offset++) {
+                const monthStart = new Date(currentYear, currentMonth - 1 + offset, 1);
+                const year = monthStart.getFullYear();
+                const month = monthStart.getMonth();
+                const monthDiv = document.createElement('div');
+                monthDiv.className = 'glass rounded-xl p-3 sm:p-6 w-full min-w-0 shrink-0 sm:w-[320px] snap-center';
+
+                const header = document.createElement('h3');
+                header.className = 'text-xl font-bold text-center mb-4 text-white uppercase tracking-widest';
+                header.textContent = `${monthNames.format(monthStart)} ${year}`;
+                monthDiv.appendChild(header);
+
+                const grid = document.createElement('div');
+                grid.className = 'grid grid-cols-7 gap-1 sm:gap-2 text-center';
+
+                for (const day of ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']) {
+                    const label = document.createElement('div');
+                    label.className = 'text-xs text-gray-400 font-bold py-2';
+                    label.textContent = day;
+                    grid.appendChild(label);
+                }
+
+                const firstDay = (monthStart.getDay() + 6) % 7;
+                for (let i = 0; i < firstDay; i++) {
+                    grid.appendChild(document.createElement('div'));
+                }
+
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    const label = dateLabels.format(new Date(year, month, day));
+                    const dayButton = document.createElement('button');
+                    dayButton.type = 'button';
+                    dayButton.textContent = day;
+                    dayButton.disabled = date < today || busyDates.has(date);
+                    dayButton.className = 'calendar-day';
+
+                    if (date < today) {
+                        dayButton.classList.add('past');
+                        dayButton.setAttribute('aria-label', `${label}, дата прошла`);
+                    } else if (busyDates.has(date)) {
+                        dayButton.classList.add('busy');
+                        dayButton.setAttribute('aria-label', `${label}, занято`);
                     } else {
-                        dayEl.className = 'calendar-day free';
-
-                        dayEl.addEventListener('click', () => {
-                            const hint = document.getElementById('booking-hint');
-                            hint.classList.remove('hidden');
-                            hint.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        dayButton.classList.add('free');
+                        dayButton.setAttribute('aria-label', `Уточнить дату: ${label}`);
+                        dayButton.setAttribute('aria-pressed', 'false');
+                        dayButton.addEventListener('click', () => {
+                            selectedButton?.setAttribute('aria-pressed', 'false');
+                            dayButton.setAttribute('aria-pressed', 'true');
+                            selectedButton = dayButton;
+                            dateLabel = label;
+                            updateBooking();
                         });
                     }
 
-                    grid.appendChild(dayEl);
+                    grid.appendChild(dayButton);
                 }
 
                 monthDiv.appendChild(grid);
@@ -855,34 +906,21 @@
         }
 
         // -----------------------
-        // ANIMATION LOGIC
+        // NAVBAR LOGIC
         // -----------------------
         function handleScroll() {
-            const sections = document.querySelectorAll('.fade-in-section');
-            
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('shadow-lg', 'bg-dark-bg/90');
             } else {
                 navbar.classList.remove('shadow-lg', 'bg-dark-bg/90');
             }
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            sections.forEach(s => observer.observe(s));
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            createFullYearCalendar();
+            renderCalendar();
             handleScroll();
             window.addEventListener('scroll', handleScroll);
-            
         });
     </script>
     <script>
@@ -890,22 +928,23 @@
             const container = document.querySelector(containerSelector);
             if (!container) return;
 
+            const getScrollAmount = () => scrollAmount ?? (container.children[1].offsetLeft - container.children[0].offsetLeft);
             const prev = container.parentElement.querySelector('.scroll-prev');
             const next = container.parentElement.querySelector('.scroll-next');
 
             prev?.addEventListener('click', () => {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                container.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
             });
 
             next?.addEventListener('click', () => {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                container.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
             });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             initHorizontalScroll('.photos-scroll', 380);
             initHorizontalScroll('#calendar-scroll-area', 340);
-            initHorizontalScroll('#reviews-scroll', 400);
+            initHorizontalScroll('#reviews-scroll', null);
         });
     </script>
 </body>
