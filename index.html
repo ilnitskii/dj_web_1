@@ -416,11 +416,20 @@
                 <!-- Лента -->
                 <div class="photos-scroll flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory no-scrollbar px-10">
                     <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center bg-black">
-                        <video id="media-video" controls muted playsinline preload="none" poster="images/event-highlight-poster.jpg"
+                        <video data-media-video controls muted playsinline preload="none" poster="images/event-highlight-poster.jpg"
                             width="720" height="1280" aria-label="Видео с мероприятия"
                             class="block w-full h-full object-contain">
                             <source src="videos/event-highlight.mp4" type="video/mp4">
                             <a href="videos/event-highlight.mp4">Открыть видео с мероприятия</a>
+                        </video>
+                    </div>
+
+                    <div class="flex-shrink-0 w-80 h-[500px] rounded-xl overflow-hidden snap-center bg-black">
+                        <video data-media-video controls muted playsinline preload="none" poster="images/event-highlight-2-poster.jpg"
+                            width="720" height="1280" aria-label="Второе видео с мероприятия"
+                            class="block w-full h-full object-contain">
+                            <source src="videos/event-highlight-2.mp4" type="video/mp4">
+                            <a href="videos/event-highlight-2.mp4">Открыть второе видео с мероприятия</a>
                         </video>
                     </div>
 
@@ -895,38 +904,39 @@
             });
         }
 
-        function initMediaVideo() {
-            const video = document.getElementById('media-video');
-            if (!video || !('IntersectionObserver' in window)) return;
+        function initMediaVideos() {
+            if (!('IntersectionObserver' in window)) return;
 
-            let isVisible = false;
-            let pausedByVisitor = false;
+            document.querySelectorAll('[data-media-video]').forEach(video => {
+                let isVisible = false;
+                let pausedByVisitor = false;
 
-            video.addEventListener('pause', () => {
-                if (isVisible && !video.ended) pausedByVisitor = true;
+                video.addEventListener('pause', () => {
+                    if (isVisible && !video.ended) pausedByVisitor = true;
+                });
+                video.addEventListener('play', () => {
+                    pausedByVisitor = false;
+                });
+
+                const observer = new IntersectionObserver(([entry]) => {
+                    isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.5;
+                    if (!isVisible) {
+                        video.pause();
+                        return;
+                    }
+                    if (!pausedByVisitor && !video.ended) {
+                        video.play().catch(() => {
+                            // Browser autoplay settings may require the visitor to press play.
+                        });
+                    }
+                }, { threshold: [0, 0.5] });
+
+                observer.observe(video);
             });
-            video.addEventListener('play', () => {
-                pausedByVisitor = false;
-            });
-
-            const observer = new IntersectionObserver(([entry]) => {
-                isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.5;
-                if (!isVisible) {
-                    video.pause();
-                    return;
-                }
-                if (!pausedByVisitor && !video.ended) {
-                    video.play().catch(() => {
-                        // Browser autoplay settings may require the visitor to press play.
-                    });
-                }
-            }, { threshold: [0, 0.5] });
-
-            observer.observe(video);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            initMediaVideo();
+            initMediaVideos();
             initHorizontalScroll('.photos-scroll', 380);
             initHorizontalScroll('#calendar-scroll-area', 340);
             initHorizontalScroll('#reviews-scroll', null);
